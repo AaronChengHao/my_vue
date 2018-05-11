@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>myVue-MVVM-demo</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+        价格: <input type="text" v-model="price">
+        </div>
+        <div>
+        品牌: <input type="text" v-model="brand">
+        </div>
+        <br>
+        <table border="1">
+            <tr>
+                <td>大-小车</td>
+                <td>{{type}}</td>
+            </tr>
+            <tr>
+                <td>品牌</td>
+                <td>{{brand}}</td>
+            </tr>
+            <tr>
+                <td>价格-W</td>
+                <td>{{price}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+    <script src="./js/Dep.js"></script>
+    <script src="./js/Watcher.js"></script>
+    <script src="./js/Directive.js"></script>
+    <script src="./js/Compile.js"></script>
+    <script src="./js/observe.js"></script>
+    <script src="./js/myVue.js"></script>
+    <script>
+
+        var car = {type:'bigCar',brand:'宝马',price:'10'};
+
+        var myvue = new myVue({
+            el:'#app',
+            data:car,
+            before:function(){
+                console.log('触发 before 事件');
+            }
+        });
+
+        setTimeout(function(){
+            car.brand = '奔驰';
+        }, 3000);
+
+        setTimeout(function(){
+            car.brand = '路虎';
+        }, 5000);
+
+        setTimeout(function(){
+            car.price = '20';
+        }, 1000);
+
+        setTimeout(function(){
+            car.price = '30';
+        }, 2000);
+
+        setTimeout(function(){
+            car.price = '40';
+        }, 3000);
+
+
+    </script>
+</body>
+</html>
